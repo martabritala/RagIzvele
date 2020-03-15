@@ -394,26 +394,34 @@ class Tests3 {
             }
         }
         if(36-this.stundas10<4){
-            this.tabulaLiela.rows[41].cells[1].innerHTML="";
-            document.getElementById("izvele41").options[1].disabled=true;
+            if(document.getElementById("izvele41").selectedIndex!=1){
+                this.tabulaLiela.rows[41].cells[1].innerHTML="";
+                document.getElementById("izvele41").options[1].disabled=true;                
+            }
             //document.getElementById("izvele41").options[1].setAttribute("class","bg-secondary text-light");
         }
         if(36-this.stundas11<2){
             for(let i=34; i<41; i++){
-                this.tabulaLiela.rows[i].cells[2].innerHTML="";
-                if(i>39 || i==37 || i==34){
-                    document.getElementById("izvele"+i).options[2].disabled=true;
-                    //document.getElementById("izvele"+i).options[2].setAttribute("class","bg-secondary text-light");
+                if(document.getElementById("izvele"+i).selectedIndex!=1){
+                    this.tabulaLiela.rows[i].cells[2].innerHTML="";
+                    if(i>39 || i==37 || i==34){
+                        document.getElementById("izvele"+i).options[2].disabled=true;
+                        //document.getElementById("izvele"+i).options[2].setAttribute("class","bg-secondary text-light");
+                    }
                 }
             }
-            this.tabulaLiela.rows[35].cells[3].innerHTML="";
-            document.getElementById("izvele35").options[1].disabled=true;
-            //document.getElementById("izvele35").options[1].setAttribute("class","bg-secondary text-light");
+            if(document.getElementById("izvele35").selectedIndex!=1){
+                this.tabulaLiela.rows[35].cells[3].innerHTML="";
+                document.getElementById("izvele35").options[1].disabled=true;
+                //document.getElementById("izvele35").options[1].setAttribute("class","bg-secondary text-light");
+            }
         }
         if(36-this.stundas11<4){
-            this.tabulaLiela.rows[41].cells[2].innerHTML="";
-            document.getElementById("izvele41").options[2].disabled=true;
-            //document.getElementById("izvele41").options[2].setAttribute("class","bg-secondary text-light");
+            if(document.getElementById("izvele41").selectedIndex!=1){
+                this.tabulaLiela.rows[41].cells[2].innerHTML="";
+                document.getElementById("izvele41").options[2].disabled=true;
+                //document.getElementById("izvele41").options[2].setAttribute("class","bg-secondary text-light");
+            }
         }
         if(36-(this.stundas12+6*(3-this.padzilinatoSkaits))<2){
             for(let i=34; i<41; i++){
@@ -565,7 +573,7 @@ class Tests3 {
             }    
             if(nr==25){         //matematika
                 this.tabulaLiela.rows[8].cells[3].innerHTML="";
-                document.getElementById("rinda8").setAttribute("class","bg-primary text-light");
+                document.getElementById("rinda8").setAttribute("class","table-primary font-weight-bolder");
             }
 
             if(nr==30){ //Fizika
