@@ -284,12 +284,14 @@ class Tests3 {
         }
         if(nr>24 && nr<33){
             this.padzilinatoIzvele(nr);
+            this.padzilinatoPareizums();
             this.padzilinatieUzObligatiem();
         }
+        // console.log("pēc vieteja, pirms liekas pārskaitīšanas:",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
         this.padzilinatoSkaitisana();
         this.dabaszinatnuSkaitisana();
-        this.padzilinatoPareizums();
-        this.padzilinatoSkaitisana();
+        // console.log("pēc liekas pārskaitīšanas:",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
+//        this.padzilinatoSkaitisana();
         this.pareizieTeksti(13,42);
         this.speckursuSaraksts();
         this.izvelesParbaude();
@@ -389,13 +391,17 @@ class Tests3 {
         }
         this.padzilinatoSkaitisana();
         if(this.padzilinatoNoSkaits>5){
+            this.padzilinatoNoSkaits=0;
             for(let i=25; i<33; i++){
                 if(document.getElementById("izvele"+i).selectedIndex==2){
                     document.getElementById("izvele"+i).autors=0;
                     this.resetNr(i,i+1); 
                 }
             }
+            this.padzilinatoSkaitisana();
+//            console.log(this.padzilinatoNoSkaits);
             this.obligatieUzPadzilinatiem();
+//            console.log(this.padzilinatoNoSkaits);
         }
         // console.log(this.padzilinatoSkaits,"yes",this.padzilinatoNoSkaits,"no")
     }
@@ -438,7 +444,7 @@ class Tests3 {
                 this.nopeNr(nr,nr+1);
                 return;
             }
-            this.padzilinatoSkaits++;
+            this.padzilinatoSkaitisana();
             if(nr==25){         //matematika
                 this.tabulaLiela.rows[8].cells[3].innerHTML="";
                 document.getElementById("rinda8").setAttribute("class","bg-primary text-light");
@@ -478,7 +484,7 @@ class Tests3 {
                         this.resetNr(i,i+1); 
                     }
                 }
-                document.getElementById("izvele"+nr).selectedIndex=2;
+                this.nopeNr(nr,nr+1)
             }
             if(this.padzilinatoNoSkaits==5){
                 for(let i=25;i<33; i++){
