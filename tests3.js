@@ -276,11 +276,9 @@ class Tests3 {
         document.getElementById("izvele"+nr).autors=1;
         if(nr<21){
             this.obligataIzvele(nr);
-            this.obligatieUzPadzilinatiem();
         }
         if(nr>21 && nr<24){
             this.programmesanaDunT(nr);
-            this.obligatieUzPadzilinatiem();
         }
         if(nr>24 && nr<33){
             this.padzilinatoIzvele(nr);
@@ -290,6 +288,7 @@ class Tests3 {
         // console.log("pēc vieteja, pirms liekas pārskaitīšanas:",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
         this.padzilinatoSkaitisana();
         this.dabaszinatnuSkaitisana();
+        this.obligatieUzPadzilinatiem();
         // console.log("pēc liekas pārskaitīšanas:",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
 //        this.padzilinatoSkaitisana();
         this.pareizieTeksti(13,42);
