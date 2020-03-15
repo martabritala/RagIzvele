@@ -52,11 +52,11 @@ class Tests3 {
             };
         };//Izveidota tabula
 
-        this.pamattabula=[["","10.kl.","11.kl","12.kl"],["Visiem RAG obligātie kursi","","",""],["Latviešu valoda I",3,3,""],["Angļu valoda I (B2)",3,3,""],
+        this.pamattabula=[["","10.kl.","11.kl","12.kl"],["Obligātie kursi visiem Rīgas Angļu ģimnāzijas skolēniem","","",""],["Latviešu valoda I",3,3,""],["Angļu valoda I (B2)",3,3,""],
             ["2.svešvaloda (B1) <br />(krievu vai vācu valoda ar priekšazināšanām)",2,2,2],["Vēsture un sociālās zinātnes I",3,4,""],["Literatūra I",3,3,""],["Kultūras pamati",3,"",""],
             ["Matemātika I",5,7,3],["Datorika",2,"",""],["Sports un veselība",2,3,3],["Projekta darbs","","",2],["Iestājoties 10. klasē obligāti jāizvēlas:","","",""],
             ["Fizika I",4,3,""],["Ķīmija I",3,3,],["Bioloģija I",1,2,],["Ģeogrāfija I",2,1,],["Dabaszinības",4,4,1],["Eiropas kultūras telpa",2,,],
-            ["3. svešvaloda (B1) <br />(franču vai vācu valoda bez priekšzināšanām)",3,3,3],["Kultūra un māksla I",,2,1],["10.klases beigās jāizvēlas:",,,],["Dizains un tehnoloģijas I",,2,4],["Programmēšana I",,2,4],
+            ["3. svešvaloda (B1) <br />(franču vai vācu valoda bez priekšzināšanām)",4,3,2],["Kultūra un māksla I",,2,1],["10.klases beigās jāizvēlas:",,,],["Dizains un tehnoloģijas I",,2,4],["Programmēšana I",,2,4],
             ["Padziļinātie kursi (jāizvēlas 3 kursi līdz 11.klases vidum):",,,],["Matemātika II",,,8],["Angļu valoda II (C1)",,,6],
             ["Latviešu valoda un literatūra II",,,6],["Sociālās zinātnes II",,,6],["Programmēšana II",,,6],["Fizika II",,,6],["Ķīmija II",,,6],["Bioloģija II",,,6],
             ["Speckursu piedāvājums (neobligāti):",,,],["Debates (vienu gadu)",2,2,2],["Angļu literatūra",,2,2],["Filozofijas pamati",,,2],["Publiskā uzstāšanās (vienu gadu)",2,2,2],
@@ -88,7 +88,19 @@ class Tests3 {
             drpdwnIzvele.options[0].selected=true;
             drpdwnIzvele.options[0].disabled=true;
             if(i>33){
-                drpdwnIzvele.classList.add("d-none");
+            drpdwnIzvele.options[0].disabled=false;
+            }
+            if(i>39 || i==34 || i==37){
+                drpdwnIzvele.appendChild(document.createElement("option"));
+                drpdwnIzvele.appendChild(document.createElement("option"));
+                drpdwnIzvele.options[1].text="Vēlos šo mācīties 10.klasē";
+                drpdwnIzvele.options[1].setAttribute("class","bg-success text-light");
+                drpdwnIzvele.options[2].text="Vēlos šo mācīties 11.klasē";
+                drpdwnIzvele.options[2].setAttribute("class","bg-success text-light");
+                drpdwnIzvele.options[3].text="Vēlos šo mācīties 12.klasē";
+                drpdwnIzvele.options[3].setAttribute("class","bg-success text-light");
+                drpdwnIzvele.options[4].text="Nevēlos šo mācīties";
+                drpdwnIzvele.options[4].setAttribute("class","bg-danger text-light");
             }
             
             drpdwnIzvele.setAttribute("id","izvele"+i);
@@ -169,6 +181,22 @@ class Tests3 {
             if(document.getElementById("izvele"+i) && document.getElementById("izvele"+i).autors==1){
                 document.getElementById("rinda"+i).classList.add("font-weight-bolder");
                 // document.getElementById("rinda"+i).classList.remove("text-black-50");
+            }
+            if(i>39 || i==34 || i==37){
+                if(document.getElementById("izvele"+i).selectedIndex==4){
+                    document.getElementById("rinda"+i).setAttribute("class","table-danger");
+                    for(let j=1; j<4; j++){
+                        this.tabulaLiela.rows[i].cells[j].innerHTML="";
+                    }
+                }
+                if(document.getElementById("izvele"+i).selectedIndex>0 && document.getElementById("izvele"+i).selectedIndex <4){
+                    document.getElementById("rinda"+i).setAttribute("class","table-success");
+                    for(let j=1; j<4; j++){
+                        this.tabulaLiela.rows[i].cells[j].innerHTML="";
+                    }
+                    let k = document.getElementById("izvele"+i).selectedIndex;
+                    this.tabulaLiela.rows[i].cells[k].innerHTML=this.pamattabula[i][k];  
+                }    
             }
         }
         this.stunduSummesana();
@@ -285,23 +313,27 @@ class Tests3 {
         if(nr<21){
             this.obligataIzvele(nr);
             this.obligatieUzPadzilinatiem();
+            this.resetSpec();
             // console.log(document.getElementById("izvele"+(nr+17)).autors);
         }
         if(nr>21 && nr<24){
             this.programmesanaDunT(nr);
             this.obligatieUzPadzilinatiem();
+            this.resetSpec();
         }
         if(nr>24 && nr<33){
             // console.log("pirms",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
             this.padzilinatoIzvele(nr);
             // console.log("pēc",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
             this.padzilinatieUzObligatiem();
+            this.resetSpec();
         }
         // console.log(nr,document.getElementById("izvele"+nr).autors);
         // this.obligatieUzPadzilinatiem();
         // console.log("pēc vieteja, pirms liekas pārskaitīšanas:",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
         this.padzilinatoSkaitisana();
         this.dabaszinatnuSkaitisana();
+        //this.resetSpec();
         // console.log("pēc liekas pārskaitīšanas:",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
 //        this.padzilinatoSkaitisana();
         this.pareizieTeksti(13,42);
@@ -329,35 +361,77 @@ class Tests3 {
         }
     }
 
+    resetSpec(){
+        for(let i=34; i<42; i++){
+            for(let j=1; j<3; j++){
+                if(document.getElementById("izvele"+i).options[j]){
+                    document.getElementById("izvele"+i).options[1].disabled=false;
+                    this.forceResetNr(i,i+1);
+                }
+            }
+        }
+    }
+
     speckursuSaraksts(){
+        for(let i=34; i<42; i++){
+            for(let j=1; j<3; j++){
+                if(document.getElementById("izvele"+i).options[j]){
+                    document.getElementById("izvele"+i).options[1].disabled=false;
+                }
+            }
+            
+        }
         this.tabulaLiela.rows[42].cells[1].innerHTML=36-this.stundas10;
         this.tabulaLiela.rows[42].cells[2].innerHTML=36-this.stundas11;
         this.tabulaLiela.rows[42].cells[3].innerHTML=36-(this.stundas12+6*(3-this.padzilinatoSkaits));
         if(36-this.stundas10<2){
             for(let i=34; i<41; i++){
-                this.tabulaLiela.rows[i].cells[1].innerHTML="";
+                if(document.getElementById("izvele"+i).selectedIndex!=1){
+                    this.tabulaLiela.rows[i].cells[1].innerHTML="";
+                    document.getElementById("izvele"+i).options[1].disabled=true;
+                    //document.getElementById("izvele"+i).options[1].setAttribute("class","bg-secondary text-light");
+                }
             }
         }
         if(36-this.stundas10<4){
             this.tabulaLiela.rows[41].cells[1].innerHTML="";
+            document.getElementById("izvele41").options[1].disabled=true;
+            //document.getElementById("izvele41").options[1].setAttribute("class","bg-secondary text-light");
         }
         if(36-this.stundas11<2){
             for(let i=34; i<41; i++){
                 this.tabulaLiela.rows[i].cells[2].innerHTML="";
+                if(i>39 || i==37 || i==34){
+                    document.getElementById("izvele"+i).options[2].disabled=true;
+                    //document.getElementById("izvele"+i).options[2].setAttribute("class","bg-secondary text-light");
+                }
             }
             this.tabulaLiela.rows[35].cells[3].innerHTML="";
+            document.getElementById("izvele35").options[1].disabled=true;
+            //document.getElementById("izvele35").options[1].setAttribute("class","bg-secondary text-light");
         }
         if(36-this.stundas11<4){
             this.tabulaLiela.rows[41].cells[2].innerHTML="";
+            document.getElementById("izvele41").options[2].disabled=true;
+            //document.getElementById("izvele41").options[2].setAttribute("class","bg-secondary text-light");
         }
         if(36-(this.stundas12+6*(3-this.padzilinatoSkaits))<2){
             for(let i=34; i<41; i++){
                 this.tabulaLiela.rows[i].cells[3].innerHTML="";
+                if(i>39 || i==37 || i==34){
+                    document.getElementById("izvele"+i).options[3].disabled=true;
+                   // document.getElementById("izvele"+i).options[3].setAttribute("class","bg-secondary text-light");
+                } else{
+                    document.getElementById("izvele"+i).options[1].disabled=true;
+                  //  document.getElementById("izvele"+i).options[1].setAttribute("class","bg-secondary text-light");
+                }
             }
             this.tabulaLiela.rows[35].cells[2].innerHTML="";
         }
         if(36-(this.stundas12+6*(3-this.padzilinatoSkaits))<4){
             this.tabulaLiela.rows[41].cells[3].innerHTML="";
+            document.getElementById("izvele41").options[3].disabled=true;
+         //   document.getElementById("izvele41").options[3].setAttribute("class","bg-secondary text-light");
         }
 
         
