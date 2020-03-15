@@ -309,7 +309,9 @@ class Tests3 {
     }
 
     izmainuParbaude(nr){
-        document.getElementById("izvele"+nr).autors=1;
+        if(nr<33){
+            document.getElementById("izvele"+nr).autors=1;
+        }
         if(nr<21){
             this.obligataIzvele(nr);
             this.obligatieUzPadzilinatiem();
@@ -374,9 +376,12 @@ class Tests3 {
 
     speckursuSaraksts(){
         for(let i=34; i<42; i++){
-            for(let j=1; j<3; j++){
+            document.getElementById("izvele"+i).autors=0;
+            console.log(i, document.getElementById("izvele"+i).autors)
+            for(let j=1; j<4; j++){
                 if(document.getElementById("izvele"+i).options[j]){
-                    document.getElementById("izvele"+i).options[1].disabled=false;
+                    console.log(i,j);
+                    document.getElementById("izvele"+i).options[j].disabled=false;
                 }
             }
             
@@ -425,21 +430,27 @@ class Tests3 {
         }
         if(36-(this.stundas12+6*(3-this.padzilinatoSkaits))<2){
             for(let i=34; i<41; i++){
-                this.tabulaLiela.rows[i].cells[3].innerHTML="";
-                if(i>39 || i==37 || i==34){
-                    document.getElementById("izvele"+i).options[3].disabled=true;
-                   // document.getElementById("izvele"+i).options[3].setAttribute("class","bg-secondary text-light");
-                } else{
-                    document.getElementById("izvele"+i).options[1].disabled=true;
-                  //  document.getElementById("izvele"+i).options[1].setAttribute("class","bg-secondary text-light");
+                if(document.getElementById("izvele"+i).selectedIndex==0){
+                    this.tabulaLiela.rows[i].cells[3].innerHTML="";
+                    if(i>39 || i==37 || i==34){
+                        document.getElementById("izvele"+i).options[3].disabled=true;
+                    // document.getElementById("izvele"+i).options[3].setAttribute("class","bg-secondary text-light");
+                    } else{
+                        document.getElementById("izvele"+i).options[1].disabled=true;
+                    //  document.getElementById("izvele"+i).options[1].setAttribute("class","bg-secondary text-light");
+                    }
                 }
             }
-            this.tabulaLiela.rows[35].cells[2].innerHTML="";
+            if(document.getElementById("izvele35").selectedIndex==0){
+                this.tabulaLiela.rows[35].cells[2].innerHTML="";
+            }
         }
         if(36-(this.stundas12+6*(3-this.padzilinatoSkaits))<4){
-            this.tabulaLiela.rows[41].cells[3].innerHTML="";
-            document.getElementById("izvele41").options[3].disabled=true;
-         //   document.getElementById("izvele41").options[3].setAttribute("class","bg-secondary text-light");
+            if(document.getElementById("izvele41").selectedIndex==0){
+                this.tabulaLiela.rows[41].cells[3].innerHTML="";
+                document.getElementById("izvele41").options[3].disabled=true;
+            //   document.getElementById("izvele41").options[3].setAttribute("class","bg-secondary text-light");
+            }
         }
 
         
