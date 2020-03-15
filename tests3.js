@@ -52,15 +52,15 @@ class Tests3 {
             };
         };//Izveidota tabula
 
-        this.pamattabula=[["","10.kl.","11.kl","12.kl"],["Visiem RAG obligātie kursi","","",""],["Latviešu valoda",3,3,""],["Angļu valoda",3,3,""],
-            ["2.svešvaloda*",2,2,2],["Vēsture un soc.zin.",3,4,""],["Literatūra",3,3,""],["Kultūras pamati",3,"",""],
-            ["Matemātika",5,7,3],["Datorika",2,"",""],["Sports un veselība",2,3,3],["Pētniecība","","",2],["Pirms stāšanās obligāti jāizvēlas:","","",""],
-            ["Fizika",4,3,""],["Ķīmija",3,3,],["Bioloģija",1,2,],["Ģeogrāfija",2,1,],["Dabaszinības",4,4,1],["Eiropas kultūras telpa",2,,],
-            ["3. svešvaloda",3,3,3],["Kultūra un māksla",,2,1],["10.klases beigās jāizvēlas:",,,],["Dizains un tehnoloģijas",,2,4],["Programmēšana",,2,4],
-            ["Padziļinātie kursi (jāizvēlas 3 kursi līdz 11.klases vidum):",,,],["Matemātika un analīze",,,8],["Angļu valoda",,,6],
-            ["Latviešu valoda",,,6],["Sociālās zinības",,,6],["Programmēšana",,,6],["Fizika",,,6],["Ķīmija",,,6],["Bioloģija",,,6],
-            ["Speckursu piedāvājums (neobligāti):",,,],["Debates (vienu gadu)",2,2,2],["Angļu literatūra",,2,2],["Filozofija",,,2],["Publiskā runa (vienu gadu)",2,2,2],
-            ["Papildu angļu valoda 12.klasē",,,2],["Psiholoģija",,,2],["Robotika (vienu gadu)",2,2,2],["Krievu valoda bez priekšzināšanām <br /> (vienu gadu)",4,4,4]
+        this.pamattabula=[["","10.kl.","11.kl","12.kl"],["Visiem RAG obligātie kursi","","",""],["Latviešu valoda I",3,3,""],["Angļu valoda I (B2)",3,3,""],
+            ["2.svešvaloda (B1) <br />(krievu vai vācu valoda ar priekšazināšanām)",2,2,2],["Vēsture un sociālās zinātnes I",3,4,""],["Literatūra I",3,3,""],["Kultūras pamati",3,"",""],
+            ["Matemātika I",5,7,3],["Datorika",2,"",""],["Sports un veselība",2,3,3],["Projekta darbs","","",2],["Pirms stāšanās obligāti jāizvēlas:","","",""],
+            ["Fizika I",4,3,""],["Ķīmija I",3,3,],["Bioloģija I",1,2,],["Ģeogrāfija I",2,1,],["Dabaszinības",4,4,1],["Eiropas kultūras telpa",2,,],
+            ["3. svešvaloda (B1) <br />(franču vai vācu valoda bez priekšzināšanām)",3,3,3],["Kultūra un māksla I",,2,1],["10.klases beigās jāizvēlas:",,,],["Dizains un tehnoloģijas I",,2,4],["Programmēšana I",,2,4],
+            ["Padziļinātie kursi (jāizvēlas 3 kursi līdz 11.klases vidum):",,,],["Matemātika II",,,8],["Angļu valoda II (C1)",,,6],
+            ["Latviešu valoda un literatūra II",,,6],["Sociālās zinātnes II",,,6],["Programmēšana II",,,6],["Fizika II",,,6],["Ķīmija II",,,6],["Bioloģija II",,,6],
+            ["Speckursu piedāvājums (neobligāti):",,,],["Debates (vienu gadu)",2,2,2],["Angļu literatūra",,2,2],["Filozofijas pamati",,,2],["Publiskā uzstāšanās (vienu gadu)",2,2,2],
+            ["Papildu angļu valoda 12.klasē",,,2],["Psiholoģijas pamati",,,2],["Robotika (vienu gadu)",2,2,2],["Krievu valoda (A2) (vienu gadu)",4,4,4]
         ];
 
         this.virzienuNosaukumi=["Vēl nav pabeigta izvēle","Dabaszinātnes A","Dabaszinātnes B", "Eiropas studijas ar 3. svešvalodu", "Eiropas studijas bez 3. svešvalodas"];
