@@ -113,9 +113,10 @@ class Tests3 {
 
         //papildu aprēķiniem mainīgie
         this.padzilinatoSkaits=0;
+        this.padzilinatoNoSkaits=0;
         this.dabaszinibuYesSkaits=0;
         this.dabaszinibuNoSkaits=0;
-        this.ieprieksNospiestais=0;
+        // this.ieprieksNospiestais=0;
 
         this.pareizieTeksti(13,42);
         let r=this.tabulaLiela.insertRow(42);
@@ -207,9 +208,7 @@ class Tests3 {
     resetTD(){
         if(document.getElementById("izvele23").selectedIndex==2 && document.getElementById("izvele22").selectedIndex==2){
             if(document.getElementById("izvele23").autors==1 && document.getElementById("izvele22").autors==1){
-                document.getElementById("izvele23").autors=0 
-                document.getElementById("izvele22").autors=0
-                this.resetNr(22,24);
+                this.forceResetNr(22,24)
             } else{
                 if(document.getElementById("izvele23").autors==1){
                     this.yepNr(22,23);
@@ -244,6 +243,15 @@ class Tests3 {
                 this.dabaszinibuNoSkaits++;
             }
         }
+    }
+
+    forceResetNr(sak,beidz){
+        for(let i=sak;i<beidz;i++){
+            if(document.getElementById("izvele"+i)){
+                document.getElementById("izvele"+i).selectedIndex=0;
+                document.getElementById("izvele"+i).autors=0;
+            }
+        };
     }
 
     resetNr(sak,beidz){
@@ -281,10 +289,12 @@ class Tests3 {
             this.programmesanaDunT(nr);
         }
         if(nr>24 && nr<33){
+            console.log("pirms",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
             this.padzilinatoIzvele(nr);
-            this.padzilinatieUzObligatiem();
+            console.log("pēc",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
+            // this.padzilinatieUzObligatiem();
         }
-        this.obligatieUzPadzilinatiem();
+        // this.obligatieUzPadzilinatiem();
         // console.log("pēc vieteja, pirms liekas pārskaitīšanas:",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
         this.padzilinatoSkaitisana();
         this.dabaszinatnuSkaitisana();
@@ -293,7 +303,7 @@ class Tests3 {
         this.pareizieTeksti(13,42);
         this.speckursuSaraksts();
         this.izvelesParbaude();
-        this.ieprieksNospiestais=nr;
+        // this.ieprieksNospiestais=nr;
         // console.log("beigas",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
     }
 
@@ -349,74 +359,74 @@ class Tests3 {
         
     }
 
-    obligatieUzPadzilinatiem(){
-        for(let i=13; i<16; i++){
-            // console.log(document.getElementById("izvele"+i).selectedIndex,"izvele",document.getElementById("izvele"+i).autors,"autors",i,"i")
-            if(document.getElementById("izvele"+i).selectedIndex!=2){
-                if(document.getElementById("izvele"+(i+17)).autors==0){
-                    this.resetNr(i+17,i+18);
-                    // console.log(i+17, "yes dators",document.getElementById("izvele"+(i+17)).selectedIndex);
-                } //else {
-                //     console.log(i+17, document.getElementById("izvele"+(i+17)).selectedIndex, "iet padzilinaatajos")
-                     //this.padzilinatoIzvele(i+17);
-                //     console.log(i+17, document.getElementById("izvele"+(i+17)).selectedIndex, "ara no padzilinaatajos")
-                //}
-            }
-            if(document.getElementById("izvele"+i).selectedIndex==2){
-                // console.log(i,"no")
-                if(document.getElementById("izvele"+(i+17)).selectedIndex==1){
-                }
-                if(document.getElementById("izvele"+(i+17)).selectedIndex!=2){
-                    this.nopeNr(i+17,i+18);
-                    // console.log(document.getElementById("izvele"+(i+17)).selectedIndex,this.padzilinatoSkaits,this.padzilinatoNoSkaits);
-                    this.padzilinatoIzvele(i+17);
-                    this.padzilinatoSkaitisana();    
-                }
-            }
-        }
-        //Tālāk programmēšana
-        if(document.getElementById("izvele23").selectedIndex==2){
-            if(document.getElementById("izvele29").selectedIndex!=2){
-                this.nopeNr(29,30);
-                this.padzilinatoIzvele(29);
-            }
-        }
-        if(document.getElementById("izvele23").selectedIndex==1){
-            if(document.getElementById("izvele29").selectedIndex==2){
-                this.resetNr(29,30);
-                this.padzilinatoSkaitisana();
-            }
-        }
-        this.padzilinatoSkaitisana();
-        if(this.padzilinatoNoSkaits>5){
-            this.padzilinatoNoSkaits=0;
-            for(let i=25; i<33; i++){
-                if(document.getElementById("izvele"+i).selectedIndex==2){
-                    document.getElementById("izvele"+i).autors=0;
-                    this.resetNr(i,i+1); 
-                }
-            }
-            this.padzilinatoSkaitisana();
-//            console.log(this.padzilinatoNoSkaits);
-            this.obligatieUzPadzilinatiem();
-//            console.log(this.padzilinatoNoSkaits);
-        }
-        // console.log(this.padzilinatoSkaits,"yes",this.padzilinatoNoSkaits,"no")
-    }
+//     obligatieUzPadzilinatiem(){
+//         for(let i=13; i<16; i++){
+//             // console.log(document.getElementById("izvele"+i).selectedIndex,"izvele",document.getElementById("izvele"+i).autors,"autors",i,"i")
+//             if(document.getElementById("izvele"+i).selectedIndex!=2){
+//                 if(document.getElementById("izvele"+(i+17)).autors==0){
+//                     this.resetNr(i+17,i+18);
+//                     // console.log(i+17, "yes dators",document.getElementById("izvele"+(i+17)).selectedIndex);
+//                 } //else {
+//                 //     console.log(i+17, document.getElementById("izvele"+(i+17)).selectedIndex, "iet padzilinaatajos")
+//                      //this.padzilinatoIzvele(i+17);
+//                 //     console.log(i+17, document.getElementById("izvele"+(i+17)).selectedIndex, "ara no padzilinaatajos")
+//                 //}
+//             }
+//             if(document.getElementById("izvele"+i).selectedIndex==2){
+//                 // console.log(i,"no")
+//                 if(document.getElementById("izvele"+(i+17)).selectedIndex==1){
+//                 }
+//                 if(document.getElementById("izvele"+(i+17)).selectedIndex!=2){
+//                     this.nopeNr(i+17,i+18);
+//                     // console.log(document.getElementById("izvele"+(i+17)).selectedIndex,this.padzilinatoSkaits,this.padzilinatoNoSkaits);
+//                     this.padzilinatoIzvele(i+17);
+//                     this.padzilinatoSkaitisana();    
+//                 }
+//             }
+//         }
+//         //Tālāk programmēšana
+//         if(document.getElementById("izvele23").selectedIndex==2){
+//             if(document.getElementById("izvele29").selectedIndex!=2){
+//                 this.nopeNr(29,30);
+//                 this.padzilinatoIzvele(29);
+//             }
+//         }
+//         if(document.getElementById("izvele23").selectedIndex==1){
+//             if(document.getElementById("izvele29").selectedIndex==2){
+//                 this.resetNr(29,30);
+//                 this.padzilinatoSkaitisana();
+//             }
+//         }
+//         this.padzilinatoSkaitisana();
+//         if(this.padzilinatoNoSkaits>5){
+//             this.padzilinatoNoSkaits=0;
+//             for(let i=25; i<33; i++){
+//                 if(document.getElementById("izvele"+i).selectedIndex==2){
+//                     document.getElementById("izvele"+i).autors=0;
+//                     this.resetNr(i,i+1); 
+//                 }
+//             }
+//             this.padzilinatoSkaitisana();
+// //            console.log(this.padzilinatoNoSkaits);
+//             this.obligatieUzPadzilinatiem();
+// //            console.log(this.padzilinatoNoSkaits);
+//         }
+//         // console.log(this.padzilinatoSkaits,"yes",this.padzilinatoNoSkaits,"no")
+//     }
 
-    padzilinatieUzObligatiem(){
-        for(let i=30; i<33; i++){
-            if(document.getElementById("izvele"+i).selectedIndex==1 && document.getElementById("izvele"+(i-17)).selectedIndex!=1){
-                this.yepNr(i-17,i-16);
-                this.obligataIzvele(i-17);
-            }
-        }
-        if(document.getElementById("izvele29").selectedIndex==1 && document.getElementById("izvele23").selectedIndex!=1){
-            this.yepNr(23,24);
-            this.programmesanaDunT(23);
-        }
+    // padzilinatieUzObligatiem(){
+    //     for(let i=30; i<33; i++){
+    //         if(document.getElementById("izvele"+i).selectedIndex==1 && document.getElementById("izvele"+(i-17)).selectedIndex!=1){
+    //             this.yepNr(i-17,i-16);
+    //             this.obligataIzvele(i-17);
+    //         }
+    //     }
+    //     if(document.getElementById("izvele29").selectedIndex==1 && document.getElementById("izvele23").selectedIndex!=1){
+    //         this.yepNr(23,24);
+    //         this.programmesanaDunT(23);
+    //     }
 
-    }
+    // }
 
     // padzilinatoPareizums(){
     //     this.padzilinatoSkaitisana();
@@ -429,81 +439,101 @@ class Tests3 {
     // }
 
     padzilinatoIzvele(nr){
+        let previous =this.padzilinatoSkaits;
         if(document.getElementById("izvele"+nr).selectedIndex==1){
+            console.log("iegaja jā", previous)
             if(this.padzilinatoSkaits==3){
                 this.nopeNr(nr,nr+1);
                 return;
             }
             this.padzilinatoSkaitisana();
-            // if(this.padzilinatoSkaits==3){
-            //     for(let i=25; i<33; i++){
-            //         if(document.getElementById("izvele"+i).selectedIndex!=1){
-            //             this.nopeNr(i,i+1);
-            //         }
-            //     }
-            //     return;
-            // }
+            if(this.padzilinatoSkaits==3){
+                for(let i=25; i<33; i++){
+                    if(document.getElementById("izvele"+i).selectedIndex!=1){
+                        this.nopeNr(i,i+1);
+                    }
+                }
+                this.padzilinatoNoSkaits=5;
+            }    
             if(nr==25){         //matematika
                 this.tabulaLiela.rows[8].cells[3].innerHTML="";
                 document.getElementById("rinda8").setAttribute("class","bg-primary text-light");
             }
 
             if(nr==30){ //Fizika
-                if(document.getElementById("izvele25").selectedIndex!=1){
-                    this.yepNr(25,26);
-                    this.padzilinatoIzvele(25);                
-                }
-                if(document.getElementById("izvele25").selectedIndex!=1){
-                    for(let i=25; i<33; i++){
-                        document.getElementById("izvele"+i).autors=0;
+                let pirmsTamMatem=document.getElementById("izvele25").selectedIndex;
+                this.yepNr(25,26);
+                this.padzilinatoSkaitisana();
+                if(this.padzilinatoSkaits==4){
+                    this.resetNr(26,33);
+                    this.padzilinatoSkaitisana();
+                    if(this.padzilinatoSkaits==4){
+                        for(let i=26; i<33; i++){
+                            if(document.getElementById("izvele"+i).selectedIndex==1&&i!=30){
+                                this.forceResetNr(i,i+1);
+                            }
+                        }
+                        this.padzilinatoSkaitisana();
                     }
-                    this.resetNr(25,33);
-                    this.padzilinatoSkaits=0;
-                    this.yepNr(30,31);
-                    document.getElementById("izvele30").autors=1;
-                    this.padzilinatoIzvele(30);
+
+                }
+                if(pirmsTamMatem!=1){
+                    console.log("pirms",this.padzilinatoSkaits, pirmsTamMatem,document.getElementById("izvele25").selectedIndex)
+                    this.padzilinatoSkaits--;
+                    this.padzilinatoIzvele(25);
+                    console.log("pec",pirmsTamMatem,document.getElementById("izvele25").selectedIndex)
                 }
             }
-            this.yepNr(nr,nr+1);
+            // this.yepNr(nr,nr+1);
         }
         if(document.getElementById("izvele"+nr).selectedIndex==2){
-            let previous=this.padzilinatoSkaits;
+            console.log("iegaja nē")
             this.padzilinatoSkaitisana();
-            if(this.padzilinatoSkaits==2 && previous==3){ //Šis paliek neizvēlēts, pārējie atverās
+            if(previous==3){ //Šis paliek neizvēlēts, pārējie atverās
                 for(let i=25; i<33; i++){
                     if(document.getElementById("izvele"+i).selectedIndex==2){
                         this.resetNr(i,i+1); 
                     }
                 }
+                this.padzilinatoSkaitisana();
+                if(this.padzilinatoNoSkaits>4){
+                    for(let i=25; i<33; i++){
+                        if(document.getElementById("izvele"+i).selectedIndex==2){
+                            this.forceResetNr(i,i+1); 
+                        }
+                    }    
+                }
                 this.nopeNr(nr,nr+1)
+                document.getElementById("izvele"+nr).autors=1;
+            }
+            this.padzilinatoSkaitisana();
+            if(nr==25){     //Ja matemātiku neņem
+                // if(document.getElementById("izvele30").selectedIndex==1){ 
+                //     this.padzilinatoSkaits--;
+                // }
+                this.padzilinatoSkaitisana();
+                if(document.getElementById("izvele"+30).selectedIndex!=2){
+                    this.nopeNr(30,31);
+//                    this.padzilinatoIzvele(30);
+                }
+                this.tabulaLiela.rows[8].cells[3].innerHTML=3;
+                document.getElementById("rinda8").setAttribute("class","table-info");
             }
             if(this.padzilinatoNoSkaits==5){
                 for(let i=25;i<33; i++){
-                    if(document.getElementById("izvele"+i).selectedIndex!=2){
+                    if(document.getElementById("izvele"+i).selectedIndex==0){
                         this.yepNr(i,i+1);
                         this.padzilinatoIzvele(i);
                     }
                 }
             }
-            if(nr==25){     //Ja matemātiku neņem
-                // if(document.getElementById("izvele30").selectedIndex==1){ 
-                //     this.padzilinatoSkaits--;
-                // }
-                this.nopeNr(30,31);
-                this.padzilinatoIzvele(30);
-                this.tabulaLiela.rows[8].cells[3].innerHTML=3;
-                document.getElementById("rinda8").setAttribute("class","table-info");
+            if(this.padzilinatoNoSkaits>5){
+                this.forceResetNr(26,33);
+                this.padzilinatoSkaitisana();
+                this.padzilinatoIzvele(25);
             }
         }
         this.padzilinatoSkaitisana();
-        if(this.padzilinatoSkaits==3){
-            for(let i=25; i<33; i++){
-                if(document.getElementById("izvele"+i).selectedIndex!=1){
-                    this.nopeNr(i,i+1);
-                }
-            }
-            this.padzilinatoNoSkaits=5;
-        }
     }
 
     programmesanaDunT(nr){
@@ -536,7 +566,7 @@ class Tests3 {
     obligataIzvele(nr){
         if(document.getElementById("izvele"+nr).selectedIndex==1){ //Ir izvēlēts kaut kas
             if(nr<17){ //dabaszinatnes A
-                this.dabaszinibuYesSkaits++;
+                this.dabaszinatnuSkaitisana();
                 if(this.dabaszinibuYesSkaits>1){
                     this.dabaszinibuA();
                 }
@@ -631,6 +661,7 @@ class Tests3 {
                 if(this.dabaszinibuNoSkaits==4){
                     this.resetNr(13,17);
                     this.dabaszinatnuSkaitisana();
+                    this.resetTD();
                 }
             }
             if(nr==20){
