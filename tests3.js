@@ -356,11 +356,11 @@ class Tests3 {
                 if(document.getElementById("izvele"+(i+17)).autors==0){
                     this.resetNr(i+17,i+18);
                     // console.log(i+17, "yes dators",document.getElementById("izvele"+(i+17)).selectedIndex);
-                } //else {
+                } else {
                 //     console.log(i+17, document.getElementById("izvele"+(i+17)).selectedIndex, "iet padzilinaatajos")
-                //     this.padzilinatoIzvele(i+17);
+                     this.padzilinatoIzvele(i+17);
                 //     console.log(i+17, document.getElementById("izvele"+(i+17)).selectedIndex, "ara no padzilinaatajos")
-                // }
+                }
             }
             if(document.getElementById("izvele"+i).selectedIndex==2){
                 // console.log(i,"no")
