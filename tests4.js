@@ -284,16 +284,20 @@ class Tests3 {
         document.getElementById("izvele"+nr).autors=1;
         if(nr<21){
             this.obligataIzvele(nr);
+            this.obligatieUzPadzilinatiem();
+            // console.log(document.getElementById("izvele"+(nr+17)).autors);
         }
         if(nr>21 && nr<24){
             this.programmesanaDunT(nr);
+            this.obligatieUzPadzilinatiem();
         }
         if(nr>24 && nr<33){
-            console.log("pirms",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
+            // console.log("pirms",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
             this.padzilinatoIzvele(nr);
-            console.log("pēc",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
-            // this.padzilinatieUzObligatiem();
+            // console.log("pēc",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
+            this.padzilinatieUzObligatiem();
         }
+        // console.log(nr,document.getElementById("izvele"+nr).autors);
         // this.obligatieUzPadzilinatiem();
         // console.log("pēc vieteja, pirms liekas pārskaitīšanas:",this.padzilinatoSkaits,this.padzilinatoNoSkaits);
         this.padzilinatoSkaitisana();
@@ -359,6 +363,30 @@ class Tests3 {
         
     }
 
+    obligatieUzPadzilinatiem(){
+        let izmainitais=0;
+        for(let i=13; i<16; i++){
+            if(document.getElementById("izvele"+i).selectedIndex==2){
+                if(document.getElementById("izvele"+(i+17)).selectedIndex!=2){
+                    this.nopeNr(i+17,i+18);
+                    izmainitais=i+17;
+                }
+            }
+        }
+        if(izmainitais!=0){
+            this.padzilinatoSkaitisana();
+            this.izmainuParbaude(izmainitais);
+            document.getElementById("izvele"+(izmainitais)).autors=0;
+        }
+        if(document.getElementById("izvele23").selectedIndex==2){
+            if(document.getElementById("izvele29").selectedIndex!=2){
+                this.nopeNr(29,30);
+                this.izmainuParbaude(29);
+                document.getElementById("izvele29").autors=0;
+            }
+        }
+    }
+
 //     obligatieUzPadzilinatiem(){
 //         for(let i=13; i<16; i++){
 //             // console.log(document.getElementById("izvele"+i).selectedIndex,"izvele",document.getElementById("izvele"+i).autors,"autors",i,"i")
@@ -414,19 +442,25 @@ class Tests3 {
 //         // console.log(this.padzilinatoSkaits,"yes",this.padzilinatoNoSkaits,"no")
 //     }
 
-    // padzilinatieUzObligatiem(){
-    //     for(let i=30; i<33; i++){
-    //         if(document.getElementById("izvele"+i).selectedIndex==1 && document.getElementById("izvele"+(i-17)).selectedIndex!=1){
-    //             this.yepNr(i-17,i-16);
-    //             this.obligataIzvele(i-17);
-    //         }
-    //     }
-    //     if(document.getElementById("izvele29").selectedIndex==1 && document.getElementById("izvele23").selectedIndex!=1){
-    //         this.yepNr(23,24);
-    //         this.programmesanaDunT(23);
-    //     }
+    padzilinatieUzObligatiem(){
+        let izmainitais=0;
+        for(let i=30; i<33; i++){
+            if(document.getElementById("izvele"+i).selectedIndex==1 && document.getElementById("izvele"+(i-17)).selectedIndex!=1){
+                this.yepNr(i-17,i-16);
+                izmainitais=i-17;
+            }
+        }
+        if(izmainitais!=0){
+            this.izmainuParbaude(izmainitais);
+            document.getElementById("izvele"+(izmainitais)).autors=0;
+        }
+        if(document.getElementById("izvele29").selectedIndex==1 && document.getElementById("izvele23").selectedIndex!=1){
+            this.yepNr(23,24);
+            this.izmainuParbaude(23);
+            document.getElementById("izvele23").autors=0;
+        }
 
-    // }
+    }
 
     // padzilinatoPareizums(){
     //     this.padzilinatoSkaitisana();
@@ -534,6 +568,7 @@ class Tests3 {
             }
         }
         this.padzilinatoSkaitisana();
+        this.obligatieUzPadzilinatiem();
     }
 
     programmesanaDunT(nr){
@@ -663,6 +698,7 @@ class Tests3 {
                     this.dabaszinatnuSkaitisana();
                     this.resetTD();
                 }
+                this.nopeNr(19,20);
             }
             if(nr==20){
                 this.dabaszinibuA();
