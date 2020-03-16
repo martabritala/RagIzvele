@@ -438,7 +438,7 @@ class Tests3 {
         this.tabulaLiela.rows[42].cells[3].innerHTML=36-(this.stundas12+6*(3-this.padzilinatoSkaits));
         if(36-this.stundas10<2){
             for(let i=34; i<41; i++){
-                if(document.getElementById("izvele"+i).selectedIndex!=1){
+                if((i==34 || i>39 || i==37) && document.getElementById("izvele"+i).selectedIndex!=1){
                     this.tabulaLiela.rows[i].cells[1].innerHTML="";
                     document.getElementById("izvele"+i).options[1].disabled=true;
                     //document.getElementById("izvele"+i).options[1].setAttribute("class","bg-secondary text-light");
