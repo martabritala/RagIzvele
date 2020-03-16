@@ -29,6 +29,11 @@ class Tests3 {
         this.saturarinda.appendChild(this.teksts);
         this.teksts.appendChild(this.divSkaidro);
         this.divSkaidro.appendChild(this.divSkaits);
+        this.maziasinfo=document.createElement("div");
+        this.maziasinfo.classList.add("absolute-bottom");
+        this.maziasinfo.setAttribute("id","infovieta");
+        this.divSkaidro.appendChild(this.maziasinfo);
+
         
 
 
@@ -64,20 +69,21 @@ class Tests3 {
         ];
 
         this.info="Kursu piedāvājumā iespējams izvēlēties, kuru no piedāvātajiem kursiem Jūs vēlaties un kuru nevēlaties mācīties vidusskolā. Treknrakstā izcelti tie Jūsu izvēlētie (vai neizvēlētie) kursi, kuri ietekmē rezultāta izvēli. Pārejot no viena piedāvājuma uz otru, rezultāts tiek parādīts pēc iespējas līdzīgāks iepriekšējam. Kad izvēlēti pamata un padziļinātie kursi, tad iespējams arī apskatīt speckursu piedāvājumu. Papildus informācija par dažādiem ierobežojumiem un izvēles iespējām pieejama pie konkrētajiem kursiem."
+        this.maziasinfo.innerHTML=this.info;
 
-        this.linijuInfo={8:"Izvēloties mācīties padziļināto kursu \"Matemātika II\", 12. klasē vairs nav kursa \"Matemātika I\". Tiem, kas neizvēlās šo padziļināto kursu, jāturpina apgūt kurss \"Matemātika I\" arī 12. klasē.",
-            12:"Rīgas Angļu ģimnāzija skolēniem piedāvā un īsteno padziļināto kursu komplektus un atbilstošus pamatkursus katrā mācību jomā divos virzienos - Dabaszinātņu un Eiropas studiju virzienā, katrā no tiem piedāvājot divus apakšvirzienus un vairākas izvēles: <br /> Dabaszinātņu virzienā iespējams izvēlēties apakšvirzienu \"Dabaszinātnes A\", kurā apgūstami visi individuālie pamatkursi dabaszinātņu jomā, un nav ierobežojumu attiecībā uz padziļināto kursu izvēli. Vēl Dabaszinātņu virzienā pieejams apakšvirziens \"Dabaszinātnes B\", kurā iespējams specializēties tikai vienā no dabaszinātņu jomas kursiem, pārējo vielu apgūstot apvienotajā kursā \"Dabaszinības\".<br /> \"Eiropas studiju virzienā\" apakšvirzienu dalīšana ir saistīta ar 3.svešvalodas izvēli.",
-            17:"Vispārīgā līmeņa kurss \"Dabaszinības\" iekļauj mācību saturu no Fizikas, Ķīmijas, Bioloģijas un Ģeogrāfijas.",
-            18:"Specializētais kurss \"Eiropas studiju\" virziena izvēlē.",
-            20:"Vizuālā māksla vai Mūzika.",
-            21:"\"Dabaszinātņu\" virzienam viens no šiem tehnoloģiju jomas kursiem ir obligāti jāapgūst. \"\" virzienam iespējams arī šos abus kursus neizvēlēties, dodot priekšroku kādam no Rīgas Angļu ģimnāzijas piedāvātajiem specializētajiem kursiem.",
-            24:"Padziļināto kursu izvēle tiks apstiprināta 11.klases vidū, skatoties pēc skolēna sekmēm piermajos 3 semestros konkrētajā mācību priekšmetā, kuru padziļināti skolēns vēlēsies apgūt.",
-            29:"Lai apgūtu padziļināto kursu \"Programmēšana II\", obligāti 11.klasē ir jāizvēlās mācīties kurss\"Programmēšana I\".",
-            30:"Lai apgūtu padziļināto kursu \"Fizika II\", obligāti jāapgūst kurss\"Fizika I\", kā arī jāapgūst padziļinātais kurss \"Matemātika II\".",
-            31:"Lai apgūtu padziļināto kursu \"Ķīmija II\", obligāti jāapgūst kurss\"Ķīmija I\".",
-            32:"Lai apgūtu padziļināto kursu \"Bioloģija II\", obligāti jāapgūst kurss\"Bioloģija I\"",
-            33:"Specializētos kursus drīkst izvēlēties tik daudzus, lai mācību stundu skaits nedēļā nepārsniedz 36 stundas. Apakšvirzienā \"Eiropas studijas bez 3. svešvalodas\" 12.klasē obligāti jāizvēlās kāds no specializētajiem kursiem."
-        };
+        this.linijuInfo=[];
+        this.linijuInfo[8]="Izvēloties mācīties padziļināto kursu \"Matemātika II\", 12. klasē vairs nav kursa \"Matemātika I\". Tiem, kas neizvēlās šo padziļināto kursu, jāturpina apgūt kurss \"Matemātika I\" arī 12. klasē.";
+        this.linijuInfo[12]="Rīgas Angļu ģimnāzija skolēniem piedāvā un īsteno padziļināto kursu komplektus un atbilstošus pamatkursus katrā mācību jomā divos virzienos - Dabaszinātņu un Eiropas studiju virzienā, katrā no tiem piedāvājot divus apakšvirzienus un vairākas izvēles: <br /> Dabaszinātņu virzienā iespējams izvēlēties apakšvirzienu \"Dabaszinātnes A\", kurā apgūstami visi individuālie pamatkursi dabaszinātņu jomā, un nav ierobežojumu attiecībā uz padziļināto kursu izvēli. Vēl Dabaszinātņu virzienā pieejams apakšvirziens \"Dabaszinātnes B\", kurā iespējams specializēties tikai vienā no dabaszinātņu jomas kursiem, pārējo vielu apgūstot apvienotajā kursā \"Dabaszinības\".<br /> \"Eiropas studiju virzienā\" apakšvirzienu dalīšana ir saistīta ar 3.svešvalodas izvēli.";
+        this.linijuInfo[17]="Vispārīgā līmeņa kurss \"Dabaszinības\" iekļauj mācību saturu no Fizikas, Ķīmijas, Bioloģijas un Ģeogrāfijas.";
+        this.linijuInfo[18]="Specializētais kurss \"Eiropas studiju\" virziena izvēlē.";
+        this.linijuInfo[20]="Vizuālā māksla vai Mūzika.";
+        this.linijuInfo[21]="\"Dabaszinātņu\" virzienam viens no šiem tehnoloģiju jomas kursiem ir obligāti jāapgūst. \"Eiropas studiju\" virzienam iespējams arī šos abus kursus neizvēlēties, dodot priekšroku kādam no Rīgas Angļu ģimnāzijas piedāvātajiem specializētajiem kursiem.";
+        this.linijuInfo[24]="Padziļināto kursu izvēle tiks apstiprināta 11.klases vidū, skatoties pēc skolēna sekmēm piermajos 3 semestros konkrētajā mācību priekšmetā, kuru padziļināti skolēns vēlēsies apgūt.";
+        this.linijuInfo[29]="Lai apgūtu padziļināto kursu \"Programmēšana II\", obligāti 11.klasē ir jāizvēlās mācīties kurss\"Programmēšana I\".";
+        this.linijuInfo[30]="Lai apgūtu padziļināto kursu \"Fizika II\", obligāti jāapgūst kurss\"Fizika I\", kā arī jāapgūst padziļinātais kurss \"Matemātika II\".";
+        this.linijuInfo[31]="Lai apgūtu padziļināto kursu \"Ķīmija II\", obligāti jāapgūst kurss\"Ķīmija I\".";
+        this.linijuInfo[32]="Lai apgūtu padziļināto kursu \"Bioloģija II\", obligāti jāapgūst kurss\"Bioloģija I\"";
+        this.linijuInfo[33]="Specializētos kursus drīkst izvēlēties tik daudzus, lai mācību stundu skaits nedēļā nepārsniedz 36 stundas. Apakšvirzienā \"Eiropas studijas bez 3. svešvalodas\" 12.klasē obligāti jāizvēlās kāds no specializētajiem kursiem.";
 
         this.virzienuNosaukumi=["Vēl nav pabeigta izvēle","Dabaszinātnes A","Dabaszinātnes B", "Eiropas studijas ar 3. svešvalodu", "Eiropas studijas bez 3. svešvalodas"];
         this.izdaritaIzvele(0);
@@ -162,7 +168,25 @@ class Tests3 {
     }
 
     infoIzveide(){
+        for(let i in this.linijuInfo){
+            this.tabulaLiela.rows[i].cells[0].innerHTML+="   <img id='img"+i+"' style='height:10%' src=\".\\info_logo.png\">"
+            document.getElementById("img"+i).style.cursor="pointer";
+            document.getElementById("img"+i).onmouseleave = () => this.resetInfo();
+            document.getElementById("img"+i).onmouseover = (evt) => {
+                this.raditInfo(i);
+            }
+            //console.log(this.linijuInfo[i]);
+        }
+    }
 
+    resetInfo(){
+        document.getElementById("infovieta").innerHTML=this.info;
+    }
+
+    raditInfo(nr){
+        document.getElementById("infovieta").innerHTML=this.linijuInfo[nr];
+
+        //console.log(nr);
     }
 
     deleteCells(nr){
