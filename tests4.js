@@ -84,7 +84,7 @@ class Tests3 {
         this.linijuInfo[30]="Lai apgūtu padziļināto kursu \"Fizika II\", obligāti jāapgūst kurss\"Fizika I\", kā arī jāapgūst padziļinātais kurss \"Matemātika II\".";
         this.linijuInfo[31]="Lai apgūtu padziļināto kursu \"Ķīmija II\", obligāti jāapgūst kurss\"Ķīmija I\".";
         this.linijuInfo[32]="Lai apgūtu padziļināto kursu \"Bioloģija II\", obligāti jāapgūst kurss\"Bioloģija I\"";
-        this.linijuInfo[33]="Specializētos kursus drīkst izvēlēties tik daudzus, lai mācību stundu skaits nedēļā nepārsniedz 36 stundas. Apakšvirzienā \"Eiropas studijas bez 3. svešvalodas\" 12.klasē obligāti jāizvēlās kāds no specializētajiem kursiem.";
+        this.linijuInfo[33]="Specializētos kursus drīkst izvēlēties tik daudzus, lai mācību stundu skaits nedēļā nepārsniedz 36 stundas. Kopā pa visiem gadiem obligāti jābūt vismaz 96 stundām nedēļā. Tātad, ja stundu skaits ir nepietiekams, nepieciešams izvēlēties kādu specializēto kursu.";
 
         this.virzienuNosaukumi=["Vēl nav pabeigta izvēle","Dabaszinātnes A","Dabaszinātnes B", "Eiropas studijas ar 3. svešvalodu", "Eiropas studijas bez 3. svešvalodas"];
         this.izdaritaIzvele(0);
