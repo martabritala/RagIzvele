@@ -162,7 +162,7 @@ class Tests3 {
     }
 
     infoIzveide(){
-        
+
     }
 
     deleteCells(nr){
@@ -429,7 +429,7 @@ class Tests3 {
         }
         if(36-this.stundas11<2){
             for(let i=34; i<41; i++){
-                if(document.getElementById("izvele"+i).selectedIndex!=1){
+                if((i==35 && document.getElementById("izvele"+i).selectedIndex!=1)||((i==34 || i>39 || i==37) && document.getElementById("izvele"+i).selectedIndex!=2)){
                     this.tabulaLiela.rows[i].cells[2].innerHTML="";
                     if(i>39 || i==37 || i==34){
                         document.getElementById("izvele"+i).options[2].disabled=true;
@@ -452,7 +452,7 @@ class Tests3 {
         }
         if(36-(this.stundas12+6*(3-this.padzilinatoSkaits))<2){
             for(let i=34; i<41; i++){
-                if(document.getElementById("izvele"+i).selectedIndex==0){
+                if(((i==35 || i==36 || i==38 || i==35) && document.getElementById("izvele"+i).selectedIndex!=1)||((i==34 || i>39 || i==37) && document.getElementById("izvele"+i).selectedIndex!=3)){
                     this.tabulaLiela.rows[i].cells[3].innerHTML="";
                     if(i>39 || i==37 || i==34){
                         document.getElementById("izvele"+i).options[3].disabled=true;
