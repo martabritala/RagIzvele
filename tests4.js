@@ -20,6 +20,7 @@ class Tests3 {
         this.divSkaits.appendChild(document.createElement("p"));
         this.divSkaits.appendChild(document.createElement("p"));
         this.divSkaits.appendChild(document.createElement("p"));
+        this.divSkaits.appendChild(document.createElement("p"));
         this.stundas10=0;
         this.stundas11=0;
         this.stundas12=0;
@@ -270,6 +271,7 @@ class Tests3 {
         this.divSkaits.childNodes[1].innerHTML="10.klasē = "+this.stundas10+"/36 stundas"
         this.divSkaits.childNodes[2].innerHTML="11.klasē = "+this.stundas11+"/36 stundas"
         this.divSkaits.childNodes[3].innerHTML="12.klasē = "+this.stundas12+"/36 stundas"
+        this.divSkaits.childNodes[4].innerHTML="Pa visiem gadiem kopā = "+(this.stundas12+this.stundas10+this.stundas11)+" stundas"
     }
 
     dabaszinibuA(){
