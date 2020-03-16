@@ -169,7 +169,8 @@ class Tests3 {
 
     infoIzveide(){
         for(let i in this.linijuInfo){
-            this.tabulaLiela.rows[i].cells[0].innerHTML+="   <img id='img"+i+"' style='height:10%' src=\".\\info_logo.png\">"
+            this.tabulaLiela.rows[i].cells[0].innerHTML+="   <img id='img"+i+"' src=\".\\info_logo.png\">"
+            document.getElementById("img"+i).style.height="10%";
             document.getElementById("img"+i).style.cursor="pointer";
             document.getElementById("img"+i).onmouseleave = () => this.resetInfo();
             document.getElementById("img"+i).onmouseover = (evt) => {
